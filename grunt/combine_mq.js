@@ -1,6 +1,7 @@
 // Combine Media Queries
 // https://github.com/frontendfriends/grunt-combine-mq
 module.exports = {
+
   dist: {
     default_options: {
       expand: true,
@@ -8,4 +9,5 @@ module.exports = {
       dest: 'styles.css',
     },
   }
+
 };
