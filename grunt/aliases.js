@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
   // default tasks to run with 'grunt' command
   grunt.registerTask('default', [
-    'watch'
+    'concurrent:first',
   ]);
 
   // Optimization tasks, run with 'grunt optimize' command
