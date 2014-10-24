@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^1.0.1",
     "grunt-combine-mq": "^0.2.1",
     "grunt-contrib-compass": "^0.7.2",
     "grunt-contrib-csslint": "^0.3.1",
