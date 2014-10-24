@@ -1,5 +1,7 @@
-# Define the required gems for this theme.
+# Bundler's config file
+# Defines the required gem versions
 # http://bundler.io/v1.3/gemfile.html
+#
 # Use ~> to to allow newer minor versions within the same major version.
 # Remove ~> to require a specific version.
 
