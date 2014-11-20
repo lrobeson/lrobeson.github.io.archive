@@ -1,0 +1,65 @@
+// @file
+// Panels layout: right sidebar three column styles
+
+$panels-layout-name: ".l-panels-right-sidebar-three-column";
+
+#{$panels-layout-name} {
+  @include breakpoint(700px, $no-query: true) {
+    &.sidebar .l-main {
+      @include grid-span(9,1);
+    }
+    .l-sidebar {
+      @include grid-span(3,10);
+    }
+    .l-postscript {
+      @include isolation-span(12,1,'both');
+    }
+    // @for directive to loop through each row (http://thesassway.com/intermediate/if-for-each-while#for)
+    @for $i from 1 through 4 {
+      &.row-#{$i}-first {
+        &.row-#{$i}-second {
+          &.row-#{$i}-third { // 1, 2, 3 have content
+            .l-row-#{$i}-first { @include grid-span(4,1); }
+            .l-row-#{$i}-second { @include grid-span(4,5); }
+            .l-row-#{$i}-third { @include grid-span(4,9); }
+          }
+          &.row-#{$i}-third-empty { // 1, 2 have content
+            .l-row-#{$i}-first { @include grid-span(6,1); }
+            .l-row-#{$i}-second { @include grid-span(6,7); }
+          }
+        }
+        &.row-#{$i}-second-empty.row-#{$i}-third { // 1, 3 have content
+          .l-row-#{$i}-first { @include grid-span(6,1); }
+          .l-row-#{$i}-third { @include grid-span(6,7); }
+        }
+      }
+      &.row-#{$i}-first-empty.row-#{$i}-second.row-#{$i}-third { // 2, 3 have content
+        .l-row-#{$i}-second { @include grid-span(6,1); }
+        .l-row-#{$i}-third { @include grid-span(6,7); }
+      }
+      &.row-#{$i}-first.row-#{$i}-second-empty.row-#{$i}-third-empty { // only 1 has content
+        .l-row-#{$i}-first { @include grid-span(12,1); }
+      }
+      &.row-#{$i}-first-empty.row-#{$i}-second.row-#{$i}-third-empty { // only 2 has content
+        .l-row-#{$i}-second { @include grid-span(12,1); }
+      }
+      &.row-#{$i}-first-empty.row-#{$i}-second-empty.row-#{$i}-third { // only 3 has content
+        .l-row-#{$i}-third { @include grid-span(12,1); }
+      }
+    }
+  } // end breakpoint
+}
+
+#{$panels-layout-name},
+#{$panels-layout-name} .l-preface,
+#{$panels-layout-name} .l-sidebar,
+#{$panels-layout-name} .l-row-1,
+#{$panels-layout-name} .l-row-2,
+#{$panels-layout-name} .l-row-3,
+#{$panels-layout-name} .l-row-4,
+#{$panels-layout-name} .l-postscript {
+  @include clearfix;
+  @if $panels-admin {
+    @include border-box;
+  }
+}
