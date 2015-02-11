@@ -27,7 +27,7 @@ module.exports = {
       // settings here override config.rb
       // http://compass-style.org/help/documentation/configuration-reference
       bundleExec: true,  // use Bundler specified versions
-      config: '../public/sites/all/themes/grand-challenges/config.rb',  // use Compass config file for most settings
+      config: '../public/sites/all/themes/gesso/config.rb',  // use Compass config file for most settings
       outputStyle: 'expanded',
       sourcemap: false,
     }
