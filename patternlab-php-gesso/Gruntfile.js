@@ -1,80 +1,27 @@
+// Gruntfile v2
+// http://www.html5rocks.com/en/tutorials/tooling/supercharging-your-gruntfile/
+//
+// Grunt refresher:
+// 1. Define the configuration for all the tasks
+//    - handled by .js files in grunt directory
+//
+// 2. Tell Grunt what plugins we plan to use
+//    - handled by this file
+//
+// 3. Tell Grunt what to do when we type "grunt" into the terminal
+//    - handled by aliases.js in grunt directory
+
 module.exports = function (grunt) {
 
-  // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
-
-  // Time how long tasks take. Can help when optimizing build times
+  // Time how long tasks take. Can help when optimizing build times.
   require('time-grunt')(grunt);
 
-  // Define the configuration for all the tasks
-  grunt.initConfig({
+  // Load all Grunt tasks with this one magical line
+  // https://github.com/sindresorhus/load-grunt-tasks
+  require('load-grunt-tasks')(grunt);
 
-    // Compiles Sass to CSS and generates debug files if requested
-    compass: {
-      options: {
-        relativeAssets: false,
-        assetCacheBuster: false,
-        raw: 'Sass::Script::Number.precision = 10\n'
-      },
-      patternlab: {
-        sassDir: 'patternlab/source/sass',
-        cssDir: 'patternlab/css',
-        generatedImagesDir: 'patternlab/images',
-        imagesDir: 'patternlab/images',
-        javascriptsDir: 'patternlab/js',
-        fontsDir: 'patternlab/fonts',
-      },
-    },
-
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {
-      patternlab: {
-        tasks: [
-          'shell:patternlab',
-          'watch'
-        ],
-        options: {
-          logConcurrentOutput: true
-        }
-      }
-    },
-
-    shell: {
-      patternlab: {
-        command: [  // generate patterns & enable live reloading
-          'php patternlab/core/builder.php -gp',
-          'php patternlab/core/autoReloadServer.php'
-        ].join('&&')
-      }
-    },
-
-    // Watch files for changes and runs tasks based on the changed files
-    watch: {
-      gruntfile: {
-        files: ['Gruntfile.js']
-      },
-      html: {
-        files: ['patternlab/source/_patterns/**/*.mustache', 'patternlab/source/_patterns/**/*.json', 'patternlab/source/_data/*.json'],
-        tasks: ['shell:patternlab'],
-        options: {
-          livereload: true,
-        }
-      },
-      patternlab: {
-        files: ['patternlab/source/sass/**/*.scss'],
-        tasks: ['compass:patternlab'],
-        options: {
-          livereload: true,
-        },
-      }
-    },
-
-  });
-
-  grunt.registerTask('patternlab', [
-    'concurrent:patternlab',
-    'shell:patternlab',
-    'watch'
-  ]);
+  // Load configuration file(s) from grunt directory to keep this file simple
+  // This plugin uses load-grunt-tasks so it doesn't need to be added
+  require('load-grunt-config')(grunt);
 
 };
