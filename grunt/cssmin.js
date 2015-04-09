@@ -1,5 +1,6 @@
 // CSSmin: minify CSS
 // https://github.com/gruntjs/grunt-contrib-cssmin
+
 module.exports = {
 
   dist: {

@@ -1,53 +1,58 @@
+// Aliases:
 // Used by load-grunt-config to define task aliases
-module.exports = function(grunt) {
+module.exports = {
 
-  // environment variable for tasks
+  // environment variable for tasks:
   // var environment = grunt.option('stage') || 'dev';
-  grunt.registerTask('build', [
-    'compass:stage'
-  ]);
+  'build': [
+    'compass:patternlabStage',
+    'optimize',
+    // 'shell:themeImagesCopy',
+    // 'shell:themeSassCopy',
+  ],
 
   // default tasks to run with 'grunt' command
-  grunt.registerTask('default', [
-    'concurrent:first',
-  ]);
+  'default': [
+    'concurrent:patternlab'
+  ],
 
   // Optimization tasks, run with 'grunt optimize' command
-  grunt.registerTask('optimize', [
+  'optimize': [
     'optimize-css',
-    'optimize-images',
-    'optimize-markup',
-    'optimize-js'
-  ]);
+    // 'optimize-images',
+    // 'optimize-markup',
+    // 'optimize-js'
+  ],
 
   // CSS testing & optimization tasks, run with 'grunt optimize-css'
-  grunt.registerTask('optimize-css', [
-    'newer:uncss',        // 1. remove unused CSS rules
-    'newer:csslint:lax',  // 2. check it for errors
-    'newer:combine_mq',   // 3. combine media queries
-    'newer:cssmin'        // 4. minify it
-  ]);
+  'optimize-css': [
+    // 'uncss',          // 1. remove unused CSS rules
+    // 'csslint:lax',    // 2. check it for errors
+    'combine_mq',   // 3. combine media queries
+    'cssmin'          // 4. minify it
+  ],
 
   // Image optimization tasks, run with 'grunt optimize-images'
-  grunt.registerTask('optimize-images', [
-    'newer:imagemin',
-    'newer:svgmin'
-  ]);
+  'optimize-images': [
+    'imagemin',
+    'imageoptim',
+    'svgmin'
+  ],
 
   // Markup optimization tasks, run with 'grunt optimize-markup'
-  grunt.registerTask('optimize-markup', [
-    'newer:htmlmin',
-    'newer:uglify'
-  ]);
+  'optimize-markup': [
+    'htmlmin',
+    'uglify'
+  ],
 
   // JavaScript testing & optimization tasks, run with 'grunt optimize-js'
-  grunt.registerTask('optimize-js', [
-    'newer:jshint'
-  ]);
+  'optimize-js': [
+    'jshint'
+  ],
 
-  // Wraith: UI regression testing
-  grunt.registerTask('wraith', [
+  // Wraith: UI regression testing (image diff screenshots)
+  'wraith': [
     'shell:wraith'
-  ]);
+  ]
 
 };

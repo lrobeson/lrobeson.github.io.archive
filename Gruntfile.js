@@ -16,6 +16,10 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times.
   require('time-grunt')(grunt);
 
+  // Load all Grunt tasks with this one magical line
+  // https://github.com/sindresorhus/load-grunt-tasks
+  require('load-grunt-tasks')(grunt);
+
   // Load configuration file(s) from grunt directory to keep this file simple
   // This plugin uses load-grunt-tasks so it doesn't need to be added
   require('load-grunt-config')(grunt);

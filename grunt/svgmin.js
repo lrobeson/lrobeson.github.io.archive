@@ -1,5 +1,6 @@
 // SVGmin: minify SVGs
 // https://github.com/sindresorhus/grunt-svgmin
+
 module.exports = {
 
   dist: {

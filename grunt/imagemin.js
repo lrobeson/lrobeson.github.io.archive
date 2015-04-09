@@ -1,5 +1,6 @@
 // Imagemin: minify images (JPGs & PNGs)
 // https://github.com/gruntjs/grunt-contrib-imagemin
+
 module.exports = {
 
   dist: {

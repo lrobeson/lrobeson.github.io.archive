@@ -1,5 +1,7 @@
-// Compass: compile Sass files to CSS & (optionally) create debug files
+// Compass:
+// Compile Sass files to CSS & (optionally) create debug files
 // https://github.com/gruntjs/grunt-contrib-compass
+
 module.exports = {
 
   dist: {

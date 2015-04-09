@@ -1,5 +1,6 @@
 // CSS Lint: check for errors
 // https://github.com/gruntjs/grunt-contrib-csslint
+
 module.exports = {
 
   strict: {

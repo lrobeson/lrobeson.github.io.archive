@@ -9,4 +9,4 @@ module.exports = {
     // your_target: {
     // },
 
-}
+};

@@ -1,5 +1,6 @@
 // Play: sound notifications
 // https://github.com/astronaughts/grunt-play
+
 module.exports = {
 
   dist: {

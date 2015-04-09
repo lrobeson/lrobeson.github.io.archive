@@ -1,5 +1,6 @@
 // Combine Media Queries
 // https://github.com/frontendfriends/grunt-combine-mq
+
 module.exports = {
 
   dist: {

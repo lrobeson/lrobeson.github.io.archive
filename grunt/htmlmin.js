@@ -1,5 +1,6 @@
 // HTMLmin: minify HTML
 // https://github.com/gruntjs/grunt-contrib-htmlmin
+
 module.exports = {
 
   dist: {
