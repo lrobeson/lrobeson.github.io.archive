@@ -1,33 +1,40 @@
-// Watch: watch for changes and runs tasks based on the type of changed files
+// Watch:
+// Watch for changes and runs tasks based on the type of changed files
 // https://github.com/gruntjs/grunt-contrib-watch
-//
-// NOTE: these tasks work in conjunction with concurrent.js
 
 module.exports = {
-
-  gruntfiles : {
-    files : ['Gruntfile.js', 'grunt/*.js'],
-    tasks : []
-  },
-
-  javascript : {
-    files : ['source/js/**/*.js', '../public/sites/all/themes/grand-challenges/js/**/*.js'],
-    tasks : ['optimize-js']
-  },
-
-  patternlabSass: {
-    files: ['source/sass/**/*.scss'],
-    tasks: ['compass:patternLab'],
+  configFiles: {
+    files: [ 'Gruntfile.js', 'grunt/*.js' ],
     options: {
+      reload: true
+    }
+  },
+
+  // recompile CSS using Compass
+  patternlabSass: {
+    files: [
+      'source/sass/**/*.scss'
+    ],
+    tasks: [
+      'compass:patternlabDev'
+    ],
+    options: {
+      interrupt: true,
       spawn: false,
     }
   },
 
-  themeSass: {
-    files: ['../public/sites/all/themes/grand-challenges/sass/*.scss', '../public/sites/all/themes/grand-challenges/sass/**/*.scss'],
-    tasks: ['compass:dev'],
+  // reload Pattern Lab if CSS, markup, or data changes
+  reload: {
+    files: [
+      'source/css/styles.css', // don't reload until final CSS is compiled (prevent multiple reloads)
+      'source/_data/**',
+      'source/_patterns/**',
+    ],
     options: {
       spawn: false,
+      livereload: true,
+      livereloadOnError: false,
     }
   }
 

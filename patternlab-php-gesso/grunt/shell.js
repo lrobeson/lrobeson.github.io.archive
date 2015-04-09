@@ -1,4 +1,5 @@
-// Shell: run shell commands
+// Shell:
+// Run shell commands
 // https://github.com/sindresorhus/grunt-shell
 
 module.exports = {
@@ -7,20 +8,12 @@ module.exports = {
     stderr: false
   },
 
-  patternlabStart: {
+  // 'php core/builder.php' generates patterns (build out public directory)
+  // '-w' flag uses native watch feature to monitor changes to CSS or markup and copy source files to public (following settings in config.ini)
+  patternlab: {
     command: [
-      'php core/builder.php -g', // Generate patterns
+      'php core/builder.php -w'
     ].join('&&')
-  },
-
-  patternlabWatch: {
-    command: [
-      'php core/builder.php -wr', // Start the Watch & Auto-Reload Server
-    ].join('&&')
-  },
-
-  wraith: {
-    command: 'wraith capture default'
   }
 
 };
